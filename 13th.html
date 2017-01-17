@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+<style>
+body
+{
+background-image: url("index.jpeg");
+
+background-size:cover;
+width:100%;
+height:100%;
+
+
+}
+h1
+{
+text-align:center;
+color:#4881ea;
+}
+.badge
+{
+position:relative;
+background:#5F9EA0;
+margin:0 auto;
+width:100px;
+height:20px;
+
+}
+
+p
+{
+position:relative;
+display: block;
+color:#00004d;
+margin-left:10px;
+
+}
+button
+{
+background:transparent;
+border:transparent;
+font-size:18px;
+font-weight:bold;
+text-decoration: underline;
+display: block;
+text-transform: capitalize;
+color:#916a08;
+
+padding:10px;
+
+}
+#btn
+{
+color:black;
+font-size:10px;
+
+}
+</style>
+</head>
+<body>
+
+<h1><b><u>TITLE</u></b></h1>
+
+<button type="button"  id="btn" onclick="test()">test</button>
+<script>
+var t;
+var b;
+var text;
+var tet=[];
+var bdy=[];
+var p2;
+var p3;
+var a=0;
+for(text=0;text<=100;text++){
+  myfunction(text);
+  }
+
+//p2.onclick(fun3());
+
+/*function fun2(){
+console.log("enter fun 2");
+alert("hello");
+}*/
+function test(){
+  for (var i = 0; i < tet.length; i++) {
+    var dis=document.getElementById("test");
+    var p1=document.createElement("p");
+p1.className="badge";
+ p2=document.createElement("button");
+p2.id="p2"+(i+1);
+
+
+//p2.className="nav-toggle";
+//p2.setAttribute("onclick", fun2());
+ p3=document.createElement("P");
+p3.id="p3"+(i+1);
+
+var user=document.createTextNode("Id:"+(i+1));
+    var v=document.createTextNode("Title : "+tet[i]);
+var b=document.createTextNode("Body : "+bdy[i]);
+p1.appendChild(user);
+console.log(p1);
+console.log(p2);
+    p2.appendChild(v);
+p3.appendChild(b)
+    dis.appendChild(p1);
+dis.appendChild(p2);
+
+dis.appendChild(p3)
+      console.log("array ||| "+i+ " sds "+tet[i]);
+document.getElementById("p3"+(i+1)).style.display='none';
+  }
+
+//fun2();
+}
+
+function myfunction(){
+
+var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      //document.getElementById("demo").innerHTML = this.responseText;
+    data = JSON.parse(xhttp.responseText);
+	var jsn=data.body;
+	console.log("data|||| "+jsn+"||||title "+data.title);
+tet.push(data.title);
+bdy.push(data.body);
+//document.getElementById("demo").innerHTML="DATA ACCESSING ( "+data.title+" )";
+t=data.title;
+b=data.body;
+//document.getElementById("demo").appenChild(data.title);
+    }
+  };
+   var url="http://jsonplaceholder.typicode.com/posts/"+text;
+ console.log(text);
+  xhttp.open("GET", url, true);
+  xhttp.send();
+}
+
+
+document.addEventListener("click", function (eventArgs) {
+ var target = eventArgs.target;
+
+console.log(eventArgs);
+
+for (var i = 0; i < tet.length; i++) {
+p2.id="p2"+(i+1);
+  var elementToLookFor =p2.id;
+
+   
+//alert("hi"+target.tagName.toLowerCase());
+        if (target.id.toLowerCase() == elementToLookFor.toLowerCase()) {
+//alert(p2.id);
+//for (var i = 0; i < tet.length; i++) {
+//alert("hi"+p2.tagName);
+
+document.getElementById("p3"+(a+1)).style.display='none';
+          var x = document.getElementById("p3"+(i+1));
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+	a=i;
+    } else {
+        x.style.display = 'none';
+
+    }
+}
+        //target = target.parentElement;
+    }
+});
+
+/*function fun1(){
+//console.log("enter");
+//console.log("title "+t);
+//var a=document.createElement("p");
+for(text=0;text<=100;text++){
+
+var a=document.getElementById("check");
+//a.id="check";
+var t1 = document.createTextNode(t);
+a.appendChild(t1);
+var a1=document.getElementById("bdy");
+//a.id="check";
+var t2 = document.createTextNode(b);
+a1.appendChild(t2);
+
+console.log("taa "+a);
+
+console.log("bb "+b);
+myfunction(text)
+}}*/
+
+</script>
+
+<div id="demo">
+
+
+</div>
+
+
+<div id="test">
+
+</div>
+</body>
+</html>
